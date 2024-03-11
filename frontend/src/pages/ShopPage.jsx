@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import DrugCard from "../components/DrugCard.jsx";
 
 const ShopPage = () => {
   const [stores, setStores] = useState([]);
@@ -41,7 +42,15 @@ const ShopPage = () => {
           )}
         </div>
       </section>
-      <section className="p-5 border border-indigo-600 w-full"></section>
+      <section className="flex gap-4 flex-wrap p-5 border border-indigo-600 w-full">
+        <DrugCard />
+        <DrugCard />
+        <DrugCard />
+        <DrugCard />
+        <DrugCard />
+
+        <DrugCard />
+      </section>
     </div>
   );
 };
