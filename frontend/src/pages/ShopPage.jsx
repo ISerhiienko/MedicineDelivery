@@ -2,6 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DrugCard from "../components/DrugCard.jsx";
 
+const products = [
+  { id: 1, name: "drug 1", price: 10 },
+  { id: 2, name: "drug 2", price: 20 },
+  { id: 3, name: "drug 3", price: 30 },
+  { id: 4, name: "drug 3", price: 40 },
+  { id: 5, name: "drug 3", price: 50 },
+];
+
 const ShopPage = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -43,13 +51,9 @@ const ShopPage = () => {
         </div>
       </section>
       <section className="flex gap-4 flex-wrap p-5 border border-indigo-600 w-full">
-        <DrugCard />
-        <DrugCard />
-        <DrugCard />
-        <DrugCard />
-        <DrugCard />
-
-        <DrugCard />
+        {products.map(({ id, ...props }) => {
+          return <DrugCard key={id} id={id} {...props} />;
+        })}
       </section>
     </div>
   );

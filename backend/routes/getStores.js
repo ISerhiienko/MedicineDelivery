@@ -7,7 +7,6 @@ router.get("/get-stores", (req, res) => {
   Stores.find({})
 
     .then((stores) => {
-      // Если магазины найдены, отправить их в формате JSON
       return res.status(200).json(stores);
     })
     .catch((err) => {

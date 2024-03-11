@@ -1,7 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import React from "react";
+import { useCart } from "../context/CartContext.jsx";
 
 const Navbar = () => {
+  const { cart } = useCart();
+
+  const drugsCount = cart.length;
+
   return (
     <div className="container">
       <nav className="nav">
@@ -9,7 +14,8 @@ const Navbar = () => {
           Shop
         </Link>
         <Link to="/cart" className="link">
-          Shopping cart
+          Shopping cart{" "}
+          <span className="text-rose-500 font-bold">({drugsCount})</span>
         </Link>
       </nav>
       <div className="content-wrapper">
