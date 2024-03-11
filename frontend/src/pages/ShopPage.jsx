@@ -22,21 +22,26 @@ const ShopPage = () => {
   }, []);
 
   return (
-    <div className="container flex">
-      <div className="shop-list flex flex-col">
-        {!loading ? (
-          <p>loading... </p>
-        ) : (
-          stores.length &&
-          stores.map(({ id, name }) => {
-            return (
-              <button key={id} className="mb-5">
-                {name}
-              </button>
-            );
-          })
-        )}
-      </div>
+    <div className="container flex gap-3">
+      <section className="p-5 border border-indigo-600">
+        <h1 className="mb-5 text-xl font-medium text-center">Shops:</h1>
+
+        <div className="shop-list flex flex-col">
+          {!loading ? (
+            <p>loading... </p>
+          ) : (
+            stores.length &&
+            stores.map(({ id, name }) => {
+              return (
+                <button key={id} className="mb-5 bg-indigo-100">
+                  {name}
+                </button>
+              );
+            })
+          )}
+        </div>
+      </section>
+      <section className="p-5 border border-indigo-600 w-full"></section>
     </div>
   );
 };
