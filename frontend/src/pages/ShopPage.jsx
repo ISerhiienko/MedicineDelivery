@@ -29,11 +29,21 @@ const ShopPage = () => {
     setActive(store[0].id);
   };
 
+  const handleSortByPrice = () => {
+    const sorted = [...drugs].sort((a, b) => b.price - a.price);
+    setDrugs(sorted);
+  };
+
+  const handleSortByDate = () => {
+    const sorted = [...drugs].sort(
+      (a, b) => new Date(b.timestamp) - new Date(a.timestamp),
+    );
+    setDrugs(sorted);
+  };
+
   useEffect(() => {
     fetchStores();
   }, []);
-
-  console.log(active);
 
   return (
     <div className="container flex gap-3">
@@ -59,11 +69,21 @@ const ShopPage = () => {
           )}
         </div>
       </section>
-      <section className="flex gap-4 flex-wrap p-5 border border-indigo-600 w-full">
-        {drugs.length &&
-          drugs.map(({ id, ...props }) => {
-            return <DrugCard key={id} id={id} {...props} />;
-          })}
+      <section className="p-5 border border-indigo-600 w-full">
+        <div className="mb-5 flex gap-5">
+          <button onClick={handleSortByPrice} className="bg-gray-200">
+            Sort from high to low
+          </button>
+          <button onClick={handleSortByDate} className="bg-gray-200">
+            Sort by date
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {drugs.length &&
+            drugs.map(({ id, ...props }) => {
+              return <DrugCard key={id} id={id} {...props} />;
+            })}
+        </div>
       </section>
     </div>
   );

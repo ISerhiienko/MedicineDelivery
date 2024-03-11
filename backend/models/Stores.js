@@ -17,6 +17,10 @@ const drugSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  fav: {
+    type: String,
+    required: true,
+  },
   timestamp: {
     type: Date,
     default: Date.now,
