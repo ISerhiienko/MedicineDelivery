@@ -6,8 +6,8 @@ const products = [
   { id: 1, name: "drug 1", price: 10 },
   { id: 2, name: "drug 2", price: 20 },
   { id: 3, name: "drug 3", price: 30 },
-  { id: 4, name: "drug 3", price: 40 },
-  { id: 5, name: "drug 3", price: 50 },
+  { id: 4, name: "drug 4", price: 40 },
+  { id: 5, name: "drug 5", price: 50 },
 ];
 
 const ShopPage = () => {
