@@ -1,6 +1,6 @@
 import { useCart } from "../context/CartContext.jsx";
 
-const DrugCard = ({ id, name, img, price }) => {
+const DrugCard = ({ id, name, image, price }) => {
   const { cart, updateCart } = useCart();
 
   const addToCart = () => {
@@ -12,7 +12,7 @@ const DrugCard = ({ id, name, img, price }) => {
 
       updateCart(newCart);
     } else {
-      const newCartItem = { id, name, price, quantity: 1 };
+      const newCartItem = { id, name, image, price, quantity: 1 };
 
       const newCart = [...cart, newCartItem];
 
@@ -21,14 +21,17 @@ const DrugCard = ({ id, name, img, price }) => {
   };
 
   return (
-    <div className="w-[300px] flex flex-col bg-emerald-100">
-      <img src={img} alt="paracetamol" />
-      <div className="flex justify-between p-3">
-        <h2 className="font-bold">{name}</h2>
-        <p className="italic">price: {price}$</p>
+    <div className="w-[300px] flex flex-col bg-gray-100">
+      <img src={image} alt={name} className="h-[200px] object-contain" />
+      <div className="flex justify-between p-5">
+        <h2 className="font-bold text-xm uppercase">{name}</h2>
+        <p className="font-bold text-green-600">{price}$</p>
       </div>
-      <div className="flex justify-center mb-2">
-        <button className="font-bold fill-amber-300" onClick={addToCart}>
+      <div className="flex justify-center mb-5">
+        <button
+          className="font-bold bg-indigo-600 text-cyan-50"
+          onClick={addToCart}
+        >
           Add to cart
         </button>
       </div>

@@ -1,6 +1,6 @@
 import { useCart } from "../context/CartContext.jsx";
 
-const CartItem = ({ id, name, img, price, quantity }) => {
+const CartItem = ({ id, name, image, price, quantity }) => {
   const { cart, updateCart } = useCart();
 
   const handleDecrement = () => {
@@ -31,7 +31,11 @@ const CartItem = ({ id, name, img, price, quantity }) => {
   return (
     <div className="flex gap-3  w-full border border-solid border-gray-500 mb-5">
       <div className="w-full">
-        <img src={img} alt="paracetamol" />
+        <img
+          src={image}
+          alt="paracetamol"
+          className="h-[200px] object-contain"
+        />
         <div className="flex justify-between p-3">
           <h2 className="font-bold">{name}</h2>
           <p className="text-xl">
