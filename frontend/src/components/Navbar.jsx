@@ -18,6 +18,9 @@ const Navbar = () => {
           Shopping cart{" "}
           <span className="text-rose-500 font-bold">({drugsCount})</span>
         </Link>
+        <Link to="/history" className="link">
+          History
+        </Link>
       </nav>
       <div className="content-wrapper">
         <Outlet />
