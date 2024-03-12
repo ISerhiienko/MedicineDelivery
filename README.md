@@ -1,6 +1,6 @@
 # Medicine Delivery Project
 
-## deploy: medicinedelivery.netlify.app
+## deploy: https://medicinedelivery.netlify.app
 
 ## How to start the project
 
