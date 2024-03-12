@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import React from "react";
 import { useCart } from "../context/CartContext.jsx";
+import { ToastContainer } from "react-toastify";
 
 const Navbar = () => {
   const { cart } = useCart();

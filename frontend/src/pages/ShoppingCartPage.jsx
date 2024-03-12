@@ -4,6 +4,7 @@ import CartItem from "../components/CartItem.jsx";
 import { useState } from "react";
 import { generateOrderId } from "../utils/generateOrderId.js";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const ShoppingCartPage = () => {
   const { cart } = useCart();
@@ -38,14 +39,15 @@ const ShoppingCartPage = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         import.meta.env.VITE_SERVER_DOMAIN + "/save-order",
         data,
       );
 
-      console.log("Order saved successfully");
+      toast.success("Order saved successfully");
     } catch (error) {
       console.error("Error saving order:", error);
+      toast.error("Error saving order");
     }
   };
 

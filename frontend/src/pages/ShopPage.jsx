@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DrugCard from "../components/DrugCard.jsx";
+import { toast } from "react-toastify";
 
 const ShopPage = () => {
   const [stores, setStores] = useState([]);
@@ -63,17 +64,21 @@ const ShopPage = () => {
 
   const addToFavorite = async (id) => {
     try {
-      await axios.put(
-        import.meta.env.VITE_SERVER_DOMAIN + `/add-favorite/${id}`,
-      );
+      await axios
+        .put(import.meta.env.VITE_SERVER_DOMAIN + `/add-favorite/${id}`)
+        .then(({ data }) => {
+          data.drug.fav === "true"
+            ? toast.success("Added to favorite")
+            : toast.success("Removed from favorite");
 
-      setDrugs((prevDrugs) =>
-        prevDrugs.map((drug) =>
-          drug.id === id
-            ? { ...drug, fav: drug.fav === "true" ? "false" : "true" }
-            : drug,
-        ),
-      );
+          setDrugs((prevDrugs) =>
+            prevDrugs.map((drug) =>
+              drug.id === id
+                ? { ...drug, fav: drug.fav === "true" ? "false" : "true" }
+                : drug,
+            ),
+          );
+        });
     } catch (err) {
       console.log(err);
     }
