@@ -1,4 +1,4 @@
-const FormField = ({ label, type, name, value, onChange }) => {
+const FormField = ({ label, type, name, value, onChange, errorMessage }) => {
   return (
     <div className="mb-4">
       <label
@@ -15,6 +15,7 @@ const FormField = ({ label, type, name, value, onChange }) => {
         value={value}
         onChange={onChange}
       />
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </div>
   );
 };

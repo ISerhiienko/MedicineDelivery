@@ -5,6 +5,7 @@ import { useState } from "react";
 import { generateOrderId } from "../utils/generateOrderId.js";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { validateForm } from "../utils/validateForm.js";
 
 const ShoppingCartPage = () => {
   const { cart } = useCart();
@@ -15,6 +16,8 @@ const ShoppingCartPage = () => {
     phone: "",
     address: "",
   });
+
+  const [formErrors, setFormErrors] = useState({});
 
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -29,16 +32,20 @@ const ShoppingCartPage = () => {
     });
   };
 
-  const orderId = generateOrderId();
-
-  const data = {
-    orderId,
-    userInfo: userData,
-    orderList: cart,
-    totalPrice,
-  };
-
   const handleSubmit = async () => {
+    if (!validateForm(userData, setFormErrors)) {
+      return;
+    }
+
+    const orderId = generateOrderId();
+
+    const data = {
+      orderId,
+      userInfo: userData,
+      orderList: cart,
+      totalPrice,
+    };
+
     try {
       await axios.post(
         import.meta.env.VITE_SERVER_DOMAIN + "/save-order",
@@ -56,7 +63,11 @@ const ShoppingCartPage = () => {
     <>
       <div className="container flex gap-3">
         <section className="p-5 bg-gray-100 w-[400px]">
-          <Form userData={userData} handleChange={handleChange} />
+          <Form
+            userData={userData}
+            handleChange={handleChange}
+            formErrors={formErrors}
+          />
         </section>
         <section className="w-full bg-gray-100 p-5 h-[600px] overflow-y-auto">
           {cart.length === 0 ? (

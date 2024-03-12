@@ -1,7 +1,6 @@
-import { useState } from "react";
 import FormField from "./FormField.jsx";
 
-const Form = ({ userData, handleChange }) => {
+const Form = ({ userData, handleChange, formErrors }) => {
   return (
     <form>
       <FormField
@@ -10,6 +9,7 @@ const Form = ({ userData, handleChange }) => {
         name="name"
         value={userData.name}
         onChange={handleChange}
+        errorMessage={formErrors.name}
       />
       <FormField
         label="Email"
@@ -17,6 +17,7 @@ const Form = ({ userData, handleChange }) => {
         name="email"
         value={userData.email}
         onChange={handleChange}
+        errorMessage={formErrors.email}
       />
       <FormField
         label="Phone"
@@ -24,6 +25,7 @@ const Form = ({ userData, handleChange }) => {
         name="phone"
         value={userData.phone}
         onChange={handleChange}
+        errorMessage={formErrors.phone}
       />
       <FormField
         label="Address"
@@ -31,6 +33,7 @@ const Form = ({ userData, handleChange }) => {
         name="address"
         value={userData.address}
         onChange={handleChange}
+        errorMessage={formErrors.address}
       />
     </form>
   );
