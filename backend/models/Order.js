@@ -28,6 +28,7 @@ const order = mongoose.Schema({
     ],
     required: true,
   },
+  totalPrice: Number,
 });
 
 export default mongoose.model("Order", order);

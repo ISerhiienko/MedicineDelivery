@@ -35,6 +35,7 @@ const ShoppingCartPage = () => {
     orderId,
     userInfo: userData,
     orderList: cart,
+    totalPrice,
   };
 
   const handleSubmit = async () => {

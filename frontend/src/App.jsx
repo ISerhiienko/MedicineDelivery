@@ -15,7 +15,7 @@ function App() {
           <Route path="cart" element={<ShoppingCartPage />} />
         </Route>
       </Routes>
-      <ToastContainer />
+      <ToastContainer autoClose={1500} />
     </div>
   );
 }
