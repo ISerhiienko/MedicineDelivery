@@ -1,7 +1,6 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import React from "react";
 import { useCart } from "../context/CartContext.jsx";
-import { ToastContainer } from "react-toastify";
 
 const Navbar = () => {
   const { cart } = useCart();
@@ -11,16 +10,16 @@ const Navbar = () => {
   return (
     <div className="container">
       <nav className="nav">
-        <Link to="/" className="link">
+        <NavLink to="/" className="link" activeClassName="active-link" exact>
           Shop
-        </Link>
-        <Link to="/cart" className="link">
+        </NavLink>
+        <NavLink to="/cart" className="link" activeClassName="active-link">
           Shopping cart{" "}
-          <span className="text-rose-500 font-bold">({drugsCount})</span>
-        </Link>
-        <Link to="/history" className="link">
+          <span className="text-rose-500 font-bold">[{drugsCount}]</span>
+        </NavLink>
+        <NavLink to="/history" className="link" activeClassName="active-link">
           History
-        </Link>
+        </NavLink>
       </nav>
       <div className="content-wrapper">
         <Outlet />
