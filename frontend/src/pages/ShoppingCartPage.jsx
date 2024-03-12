@@ -3,6 +3,7 @@ import { useCart } from "../context/CartContext.jsx";
 import CartItem from "../components/CartItem.jsx";
 import { useState } from "react";
 import { generateOrderId } from "../utils/generateOrderId.js";
+import axios from "axios";
 
 const ShoppingCartPage = () => {
   const { cart } = useCart();
@@ -29,13 +30,23 @@ const ShoppingCartPage = () => {
 
   const orderId = generateOrderId();
 
-  const handleSubmit = () => {
-    const data = {
-      orderId,
-      userInfo: userData,
-      orderList: cart,
-    };
-    console.log(data);
+  const data = {
+    orderId,
+    userInfo: userData,
+    orderList: cart,
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(
+        import.meta.env.VITE_SERVER_DOMAIN + "/save-order",
+        data,
+      );
+
+      console.log("Order saved successfully");
+    } catch (error) {
+      console.error("Error saving order:", error);
+    }
   };
 
   return (
