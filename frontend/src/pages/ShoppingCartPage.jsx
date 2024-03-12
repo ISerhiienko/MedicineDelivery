@@ -4,7 +4,7 @@ import CartItem from "../components/CartItem.jsx";
 import { useState } from "react";
 import { generateOrderId } from "../utils/generateOrderId.js";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { validateForm } from "../utils/validateForm.js";
 
 const ShoppingCartPage = () => {

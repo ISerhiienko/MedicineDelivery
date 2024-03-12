@@ -10,14 +10,14 @@ const Navbar = () => {
   return (
     <div className="container">
       <nav className="nav">
-        <NavLink to="/" className="link" activeClassName="active-link" exact>
+        <NavLink to="/" className="link">
           Shop
         </NavLink>
-        <NavLink to="/cart" className="link" activeClassName="active-link">
+        <NavLink to="/cart" className="link">
           Shopping cart{" "}
           <span className="text-rose-500 font-bold">[{drugsCount}]</span>
         </NavLink>
-        <NavLink to="/history" className="link" activeClassName="active-link">
+        <NavLink to="/history" className="link">
           History
         </NavLink>
       </nav>

@@ -29,33 +29,27 @@ const CartItem = ({ id, name, image, price, quantity }) => {
   };
 
   return (
-    <div className="flex gap-3  w-full border border-solid border-gray-500 mb-5">
-      <div className="w-full flex">
+    <div className="flex items-center justify-between w-full border border-solid border-gray-300 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out p-4">
+      <div className="flex items-center w-1/2">
         <img
           src={image}
-          alt="paracetamol"
-          className="h-[200px] w-[200px] object-contain"
+          alt={name}
+          className="w-28 h-28 object-cover rounded-lg mr-4"
         />
-        <div className="w-full p-10">
-          <div className="flex justify-between mb-5">
-            <p className="text-xl">
-              name: <span className="font-bold">{name}</span>
-            </p>
-            <p className="text-xl">
-              price: <span className="font-bold">{price * quantity}</span>$
-            </p>
-          </div>
-          <div className="flex justify-center items-center pb-5">
+        <div className="flex flex-col">
+          <p className="text-lg font-semibold">{name}</p>
+          <p className="text-xl text-green-600">${price * quantity}</p>
+          <div className="flex items-center mt-2">
             <button
-              className="font-bold fill-amber-300 border border-solid border-black"
               onClick={handleDecrement}
+              className="w-8 h-8 flex items-center justify-center bg-gray-200 text-gray-600 font-semibold rounded-full focus:outline-none hover:bg-gray-300 transition duration-300 ease-in-out"
             >
               -
             </button>
-            <span className="font-bold pl-5 pr-5">{quantity}</span>
+            <span className="mx-4">{quantity}</span>
             <button
-              className="font-bold fill-amber-300 border border-solid border-black"
               onClick={handleIncrement}
+              className="w-8 h-8 flex items-center justify-center bg-gray-200 text-gray-600 font-semibold rounded-full focus:outline-none hover:bg-gray-300 transition duration-300 ease-in-out"
             >
               +
             </button>
@@ -64,7 +58,7 @@ const CartItem = ({ id, name, image, price, quantity }) => {
       </div>
       <button
         onClick={handleRemove}
-        className="flex justify-center items-center p-5 bg-rose-300 text-center hover:cursor-pointer hover:bg-rose-400 transition"
+        className="flex items-center justify-center w-24 h-24 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 ease-in-out focus:outline-none"
       >
         Remove
       </button>

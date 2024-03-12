@@ -121,7 +121,7 @@ const ShopPage = () => {
             Sort by date
           </button>
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-4">
           {drugs.length &&
             drugs.map(({ id, ...props }) => {
               return (
