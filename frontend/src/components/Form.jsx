@@ -1,22 +1,7 @@
 import { useState } from "react";
 import FormField from "./FormField.jsx";
 
-const Form = () => {
-  const [userData, setUserData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-  };
-
+const Form = ({ userData, handleChange }) => {
   return (
     <form>
       <FormField

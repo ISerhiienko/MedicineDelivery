@@ -30,32 +30,36 @@ const CartItem = ({ id, name, image, price, quantity }) => {
 
   return (
     <div className="flex gap-3  w-full border border-solid border-gray-500 mb-5">
-      <div className="w-full">
+      <div className="w-full flex">
         <img
           src={image}
           alt="paracetamol"
-          className="h-[200px] object-contain"
+          className="h-[200px] w-[200px] object-contain"
         />
-        <div className="flex justify-between p-3">
-          <h2 className="font-bold">{name}</h2>
-          <p className="text-xl">
-            price: <span className="font-bold">{price * quantity}</span>$
-          </p>
-        </div>
-        <div className="flex justify-center items-center pb-5">
-          <button
-            className="font-bold fill-amber-300 border border-solid border-black"
-            onClick={handleDecrement}
-          >
-            -
-          </button>
-          <span className="font-bold pl-5 pr-5">{quantity}</span>
-          <button
-            className="font-bold fill-amber-300 border border-solid border-black"
-            onClick={handleIncrement}
-          >
-            +
-          </button>
+        <div className="w-full p-10">
+          <div className="flex justify-between mb-5">
+            <p className="text-xl">
+              name: <span className="font-bold">{name}</span>
+            </p>
+            <p className="text-xl">
+              price: <span className="font-bold">{price * quantity}</span>$
+            </p>
+          </div>
+          <div className="flex justify-center items-center pb-5">
+            <button
+              className="font-bold fill-amber-300 border border-solid border-black"
+              onClick={handleDecrement}
+            >
+              -
+            </button>
+            <span className="font-bold pl-5 pr-5">{quantity}</span>
+            <button
+              className="font-bold fill-amber-300 border border-solid border-black"
+              onClick={handleIncrement}
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
       <button
