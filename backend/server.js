@@ -11,7 +11,11 @@ const server = express();
 const PORT = 3000;
 
 server.use(express.json());
-server.use(cors());
+const corsOptions = {
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+server.use(cors(corsOptions));
 
 mongoose.connect(process.env.DB_LOCATION, {
   autoIndex: true,
