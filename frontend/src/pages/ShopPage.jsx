@@ -30,15 +30,53 @@ const ShopPage = () => {
   };
 
   const handleSortByPrice = () => {
-    const sorted = [...drugs].sort((a, b) => b.price - a.price);
-    setDrugs(sorted);
+    const favoriteDrugs = drugs.filter((drug) => drug.fav === "true");
+    const nonFavoriteDrugs = drugs.filter((drug) => drug.fav !== "true");
+
+    const sortedFavoriteDrugs = favoriteDrugs.sort((a, b) => b.price - a.price);
+
+    const sortedNonFavoriteDrugs = nonFavoriteDrugs.sort(
+      (a, b) => b.price - a.price,
+    );
+
+    const sortedDrugs = [...sortedFavoriteDrugs, ...sortedNonFavoriteDrugs];
+
+    setDrugs(sortedDrugs);
   };
 
   const handleSortByDate = () => {
-    const sorted = [...drugs].sort(
+    const favoriteDrugs = drugs.filter((drug) => drug.fav === "true");
+    const nonFavoriteDrugs = drugs.filter((drug) => drug.fav !== "true");
+
+    const sortedFavoriteDrugs = favoriteDrugs.sort(
       (a, b) => new Date(b.timestamp) - new Date(a.timestamp),
     );
-    setDrugs(sorted);
+
+    const sortedNonFavoriteDrugs = nonFavoriteDrugs.sort(
+      (a, b) => new Date(b.timestamp) - new Date(a.timestamp),
+    );
+
+    const sortedDrugs = [...sortedFavoriteDrugs, ...sortedNonFavoriteDrugs];
+
+    setDrugs(sortedDrugs);
+  };
+
+  const addToFavorite = async (id) => {
+    try {
+      await axios.put(
+        import.meta.env.VITE_SERVER_DOMAIN + `/add-favorite/${id}`,
+      );
+
+      setDrugs((prevDrugs) =>
+        prevDrugs.map((drug) =>
+          drug.id === id
+            ? { ...drug, fav: drug.fav === "true" ? "false" : "true" }
+            : drug,
+        ),
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -81,7 +119,14 @@ const ShopPage = () => {
         <div className="flex flex-wrap gap-3">
           {drugs.length &&
             drugs.map(({ id, ...props }) => {
-              return <DrugCard key={id} id={id} {...props} />;
+              return (
+                <DrugCard
+                  key={id}
+                  id={id}
+                  addToFavorite={addToFavorite}
+                  {...props}
+                />
+              );
             })}
         </div>
       </section>
