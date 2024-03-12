@@ -1,5 +1,7 @@
 # Medicine Delivery Project
 
+## deploy: medicinedelivery.netlify.app
+
 ## How to start the project
 
 1.  Clone the repository:
