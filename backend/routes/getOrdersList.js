@@ -3,8 +3,8 @@ import Order from "../models/Order.js";
 
 const router = express.Router();
 
-router.get("/get-orders/:email", async (req, res) => {
-  const { email } = req.params;
+router.post("/get-orders", async (req, res) => {
+  const { email } = req.body;
 
   try {
     const orders = await Order.find({ "userInfo.email": email });

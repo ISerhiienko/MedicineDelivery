@@ -5,6 +5,7 @@ import cors from "cors";
 import getStores from "./routes/getStores.js";
 import addToFavorite from "./routes/addToFavorite.js";
 import saveOrder from "./routes/saveOrder.js";
+import getOrdersList from "./routes/getOrdersList.js";
 
 const server = express();
 const PORT = 3000;
@@ -29,3 +30,4 @@ db.on("connected", () => {
 server.use("/", getStores);
 server.use("/", addToFavorite);
 server.use("/", saveOrder);
+server.use("/", getOrdersList);
