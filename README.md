@@ -30,13 +30,18 @@ git checkout master
 cd frontend
 ```
 
-2. Run development mode using npm:
+2. Install the packages
+```bash
+npm i
+```
+
+3. Run development mode using npm:
 
 ```bash
 npm run dev
 ```
 
-3. The server will be available at:
+4. The server will be available at:
 
 ```bash
 http://localhost:5173/
@@ -50,7 +55,12 @@ http://localhost:5173/
 cd backend
 ```
 
-2. Start the server using npm:
+2. Install the packages
+```bash
+npm i
+```
+
+3. Start the server using npm:
 
 ```bash
 npm start
